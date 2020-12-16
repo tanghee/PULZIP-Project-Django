@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- content -->
+    <div class="content_board">
+        <div class="container">
+            <table class="board">
+                <tr>
+                    <th width="6%">번호</th>
+                    <th width="60%">제목</th>
+                    <th width="14%">글쓴이</th>
+                    <th width="20%">날짜</th>
+                </tr>
+                {% for feed in articles %}
+                    <tr>
+                        <td class="number">{{ feed.pk }}</td>
+                        <td class="title"><a href="/board/feed/{{ feed.pk }}/">{{ feed.title }}</a></td>
+                        <td class="author">{{ feed.author }}</td>
+                        <td class="date">{{ feed.created_date }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="4">
+                        <div class="page">
+                            <a href="/board/create/" class="write_button">작성하기</a>
+                            <a href="/" class="write_button right">뒤로가기</a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- //content -->
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- content -->
+    <div class="content_board">
+        <div class="container">
+            <table class="board detail">
+                <tr>
+                    <th width="60%" class="th_left">{{ feed.author }} : {{ feed.title }}</th>
+                    <th width="14%" class="th_right">{{ feed.created_date }}</th>
+                </tr>
+                <tr>
+                    <td colspan="2" class="content">{{ feed.text }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="page">
+                            <a href="/board/feed/{{ feed.pk }}/update">수정하기</a> <a href="/board/feed/{{ feed.pk }}/delete">삭제하기</a>
+                            <a href="/board/" class="write_button right">리스트로</a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- //content -->
+{% endblock %}

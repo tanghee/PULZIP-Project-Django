@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- content -->
+    <div class="content_board">
+        <div class="container">
+            <table class="board">
+                <tr>
+                    <th width="6%">번호</th>
+                    <th width="60%">제목</th>
+                    <th width="14%">글쓴이</th>
+                    <th width="20%">날짜</th>
+                </tr>
+                {% for feed in member_list %}
+                    <tr>
+                        <td class="number">{{ feed.pk }}</td>
+                        <td class="title"><a href="/notice/feed/{{ feed.pk }}/">{{ feed.title }}</a></td>
+                        <td class="author">{{ feed.author }}</td>
+                        <td class="date">{{ feed.created_date }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="4">
+                        <div class="paging">
+                            {% load mathfilters %}
+                            {% if startPageNum != 1 %}
+                                <a href="/notice/?pageNum={{ startPageNum | sub:1 }}">[이전]</a>
+                            {% else %}
+                                <a href="javascript:" class="muted">[이전]</a>
+                            {% endif %}
+
+                            {% for i in bottomPages %}
+                                {% if i == pageNum %}
+                                    <a class="active" href="/notice/?pageNum={{i }}">{{i }}</a>
+                                {% else %}
+                                    <a href="/notice/?pageNum={{i }}">{{i }}</a>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if endPageNum < totalPageCount %}
+                                <a href="/notice/?pageNum={{ endPageNum | add:1 }}">[다음]</a>
+                            {% else %}
+                                <a href="javascript:" class="muted">[다음]</a>
+                            {% endif %}
+                        </div>
+                        <div class="page">
+                            {% if user.is_anonymous %}
+                                <a href="/account/" onclick="return confirm('로그인 하셔야 게시글 작성이 가능합니다.\n로그인 하시겠습니까?')" class="write_button">작성하기</a>
+                            {% else %}
+                                <a href="/notice/create/" class="write_button">작성하기</a>
+                            {% endif %}
+                            <a href="/" class="write_button right">뒤로가기</a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- //content -->
+{% endblock %}

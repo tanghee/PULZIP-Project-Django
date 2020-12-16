@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- content -->
+    <div class="content_board">
+        <div class="container">
+            <div class="form_box">
+                <form method="POST">
+                    {% csrf_token %}
+                    <h3>게시글 수정하기</h3><br>
+                    <input class="input_field" type="text" name="author" value="{{ feed.author }}" readonly><br>
+                    <input class="input_field" type="password" placeholder="글 비밀번호" name="password" required><br>
+                    <input class="input_field" type="text" placeholder="제목을 입력해주세요." name="title" value="{{ feed.title }}" required><br>
+                    <textarea class="textarea_field" placeholder="내용을 입력해주세요." name="content" required>{{ feed.text }}</textarea><br>
+                    <div class="page">
+                        <div style="color: red; float: left; font-size: 12px;">{{ error }}</div>
+                        <button class="write_button">수정하기</button>
+                        <a href="/notice/feed/{{ feed.pk }}/" class="write_button right">뒤로가기</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- //content -->
+{% endblock %}

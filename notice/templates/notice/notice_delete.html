@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- content -->
+    <div class="content_board">
+        <div class="container">
+            <div class="form_box">
+                <form method="POST">
+                    {% csrf_token %}
+                    <h3>게시글 삭제하기</h3><br>
+                    <h4>{{ feed.author }} : {{ feed.title }}</h4>
+                    <input class="input_field" type="password" placeholder="글 비밀번호" name="password" required><br>
+                    <div class="page">
+                        <div style="color: red; float: left; font-size: 12px;">{{ error }}</div>
+                        <button class="write_button">삭제하기</button>
+                        <a href="/notice/feed/{{ feed.pk }}/" class="write_button right">뒤로가기</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //content -->
+{% endblock %}

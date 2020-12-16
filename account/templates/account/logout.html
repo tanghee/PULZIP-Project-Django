@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- content -->
+    <div class="content_account" style="height: 400px;">
+        성공적으로 로그아웃 되었습니다.<br>
+        <a href="{% url 'account:login' %}">다시로그인</a>
+        <a href="{% url 'main:main_link' %}">홈으로가기</a>
+    </div>
+    <!-- //content -->
+{% endblock %}

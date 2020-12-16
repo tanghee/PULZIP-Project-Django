@@ -1,0 +1,30 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+    <!-- content -->
+    <div class="content_account">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td colspan="2" class="table_title" required>LOGIN</td>
+                </tr>
+                <tr>
+                    <td>USERNAME</td>
+                    <td><input type="id" name="username" required></td>
+                </tr>
+                <tr>
+                    <td>PASSWORD</td>
+                    <td><input type="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit">LOGIN</button>&nbsp;&nbsp;
+                        <a href="{% url 'account:register' %}"><button type="button">SIGN UP</button></a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!-- //content -->
+{% endblock %}
